@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/index.css';
 
 const NavBar = () => {
+  // STATE HELD FOR RENDERING LOGIN/SIGNUP FORMS
+  const [signInUp, setSignInUp] = useState(false);
+
   return (
     <div className="logo-pane">
       <div className="company-info">
@@ -12,9 +15,48 @@ const NavBar = () => {
         <h2 style={{ margin: 0 }}>Human Rights First</h2>
       </div>
       <div className="user-nav">
-        <button>Sign In</button>
-        <button>Sign Up</button>
+        <button
+          onClick={e => {
+            e.preventDefault();
+            setSignInUp('login');
+          }}
+        >
+          Sign In
+        </button>
+
+        <button
+          onClick={e => {
+            e.preventDefault();
+            setSignInUp('signup');
+          }}
+        >
+          Sign Up
+        </button>
       </div>
+
+      {signInUp && (
+        <div
+          style={{
+            position: 'absolute',
+            margin: 'auto',
+            top: '50%',
+            right: '30%',
+            width: '20%',
+            height: '20%',
+            textAlign: 'center',
+          }}
+        >
+          <p>{signInUp === 'login' ? 'Login' : 'Sign Up'}</p>
+          <button
+            onClick={e => {
+              e.preventDefault();
+              setSignInUp(false);
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      )}
     </div>
   );
 };

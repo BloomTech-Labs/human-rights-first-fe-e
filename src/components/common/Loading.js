@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import OldMap from './OldMap';
-import Map from '../common/Map';
+// import Map from '../common/Map';
 import Graph from '../common/Graph';
 import About from '../common/About';
 import FiltersForm from './FilterForm';
@@ -33,7 +33,7 @@ export const Loading = () => {
         >
           <TabPane tab="Map" key="1">
             <div id="map" style={{ display: 'block' }}>
-              {<Map />}
+              {/* {<Map />} */}
             </div>
           </TabPane>
           <TabPane tab="Graph" key="2" style={{ backgroundColor: '#191a1a' }}>
