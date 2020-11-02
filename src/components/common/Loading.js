@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-// import OldMap from './OldMap';
-import Map from '../common/Map';
-import Graph from '../common/Graph';
+import OldMap from './OldMap';
+// import Map from '../common/Map';
+// import Graph from '../common/Graph';
+import NewGraph from './NewGraph';
 import About from '../common/About';
 import FiltersForm from './FilterForm';
 import 'antd/dist/antd.css';
@@ -33,11 +34,11 @@ export const Loading = () => {
         >
           <TabPane tab="Map" key="1">
             <div id="map" style={{ display: 'block' }}>
-              {<Map />}
+              {/* {<Map />} */}
             </div>
           </TabPane>
           <TabPane tab="Graph" key="2" style={{ backgroundColor: '#191a1a' }}>
-            <div id="graph">{<Graph />}</div>
+            <div id="graph">{<NewGraph />}</div>
           </TabPane>
           <TabPane tab="About" key="3">
             <div id="about">{<About />}</div>
