@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import '../../styles/index.css';
+import SignInModal from './SignInModal/SignInModal';
 
 const NavBar = () => {
   // STATE HELD FOR RENDERING LOGIN/SIGNUP FORMS
-  const [signInUp, setSignInUp] = useState(false);
+  const [signIn, setSignIn] = useState(false);
 
   return (
     <div className="logo-pane">
@@ -18,7 +19,7 @@ const NavBar = () => {
         <button
           onClick={e => {
             e.preventDefault();
-            setSignInUp('login');
+            setSignIn('SignIn');
           }}
         >
           Sign In
@@ -27,36 +28,14 @@ const NavBar = () => {
         <button
           onClick={e => {
             e.preventDefault();
-            setSignInUp('signup');
+            setSignIn('SignUp');
           }}
         >
           Sign Up
         </button>
       </div>
 
-      {signInUp && (
-        <div
-          style={{
-            position: 'absolute',
-            margin: 'auto',
-            top: '50%',
-            right: '30%',
-            width: '20%',
-            height: '20%',
-            textAlign: 'center',
-          }}
-        >
-          <p>{signInUp === 'login' ? 'Login' : 'Sign Up'}</p>
-          <button
-            onClick={e => {
-              e.preventDefault();
-              setSignInUp(false);
-            }}
-          >
-            Cancel
-          </button>
-        </div>
-      )}
+      {signIn && <SignInModal signIn={signIn} setSignIn={setSignIn} />}
     </div>
   );
 };
