@@ -19,7 +19,7 @@ const NavBar = () => {
         <button
           onClick={e => {
             e.preventDefault();
-            setSignIn('SignIn');
+            setSignIn('Sign In');
           }}
         >
           Sign In
@@ -28,7 +28,7 @@ const NavBar = () => {
         <button
           onClick={e => {
             e.preventDefault();
-            setSignIn('SignUp');
+            setSignIn('Sign Up');
           }}
         >
           Sign Up

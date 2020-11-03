@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const ModalDiv = styled.div`
   position: fixed;
+  display: flex;
+  flex-direction: column;
   margin: auto;
   top: 30vh; // SignInModal is
   left: 30vw; // centered on the
@@ -27,4 +29,23 @@ export const XButton = styled.span`
   :hover {
     cursor: pointer;
   }
+`;
+
+export const ModalForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ModalInput = styled.input`
+  width: 50%;
+  margin: auto;
+  color: black;
+`;
+
+export const ModalSubmit = styled.button`
+  width: 20%;
+  color: black;
+  background-color: white;
+  margin-top: 5vh;
 `;
