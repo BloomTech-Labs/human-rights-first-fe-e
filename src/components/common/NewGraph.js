@@ -30,12 +30,13 @@ class NewGraph extends React.Component {
     return (
       <div className="graph-container">
         <VictoryChart
-          width={1000}
-          height={600}
+          width={700}
+          height={500}
           scale={{ x: 'time' }}
+          // padding={80}
           containerComponent={
             <VictoryZoomContainer
-              responsive={false}
+              responsive={true}
               zoomDimension="x"
               zoomDomain={this.state.zoomDomain}
               onZoomDomainChange={this.handleZoom.bind(this)}
@@ -47,6 +48,9 @@ class NewGraph extends React.Component {
             style={{
               data: { stroke: 'tomato' },
             }}
+            data={GraphData}
+          />
+          <VictoryScatter
             data={GraphData}
             events={[
               {
@@ -78,7 +82,14 @@ class NewGraph extends React.Component {
               },
             ]}
           />
-          <VictoryScatter data={GraphData} />
+          <VictoryAxis
+            tickFormat={x => new Date(x).getFullYear()}
+            // tickValues={
+            //   1980,
+            //   2020
+            // }
+          />
+          <VictoryAxis dependentAxis tickFormat={[200, 300, 400, 500, 600]} />
         </VictoryChart>
 
         <VictoryChart
@@ -88,7 +99,7 @@ class NewGraph extends React.Component {
           padding={{ top: 0, left: 50, right: 50, bottom: 30 }}
           containerComponent={
             <VictoryBrushContainer
-              responsive={false}
+              responsive={true}
               brushDimension="x"
               brushDomain={this.state.selectedDomain}
               onBrushDomainChange={this.handleBrush.bind(this)}

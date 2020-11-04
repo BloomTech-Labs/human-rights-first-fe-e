@@ -1,0 +1,16 @@
+{"data": 
+  [
+    {
+      "src": ["https://twitter.com/greg_doucette/status/1270378392454672390", "https://twitter.com/greg_doucette/status/1270378863219138561"],
+      "state": "North Carolina",
+      "city": "Asheville",
+      "desc": "A man was shot in the head at close range with a pepper ball. Footage was uploaded on June 9th, but date of incident is unknown.",
+      "tags": ["pepperball", "protester"],
+      "geolocation": {"lat": "35.5950581", "long": "-82.5514869"},
+      "title": "Man shot in head with pepper ball.",
+      "date": "2020-06-09",
+      "force_category": "less-lethal projectile",
+      "isprotest": "1"
+    }
+  ]
+}
