@@ -8,9 +8,86 @@
       "tags": ["pepperball", "protester"],
       "geolocation": {"lat": "35.5950581", "long": "-82.5514869"},
       "title": "Man shot in head with pepper ball.",
-      "date": "2020-06-09",
-      "force_category": "less-lethal projectile",
-      "isprotest": "1"
+      "date": "1982-06-09",
+      "force_category": "less-lethal projectile"
+    },
+    {
+      "src": ["https://twitter.com/greg_doucette/status/1270378392454672390", "https://twitter.com/greg_doucette/status/1270378863219138561"],
+      "state": "California",
+      "city": "Los Angeles",
+      "desc": "A man was shot in the head at close range with a pepper ball. Footage was uploaded on June 9th, but date of incident is unknown.",
+      "tags": ["pepperball", "protester"],
+      "geolocation": {"lat": "35.5950581", "long": "-82.5514869"},
+      "title": "Man shot in head with pepper ball.",
+      "date": "1987-06-09",
+      "force_category": "less-lethal projectile"
+    },
+    {
+      "src": ["https://twitter.com/greg_doucette/status/1270378392454672390", "https://twitter.com/greg_doucette/status/1270378863219138561"],
+      "state": "Sout Carolina",
+      "city": "Buckeye",
+      "desc": "A man was shot in the head at close range with a pepper ball. Footage was uploaded on June 9th, but date of incident is unknown.",
+      "tags": ["pepperball", "protester"],
+      "geolocation": {"lat": "35.5950581", "long": "-82.5514869"},
+      "title": "Man shot in head with pepper ball.",
+      "date": "1993-06-09",
+      "force_category": "less-lethal projectile"
+    },
+    {
+      "src": ["https://twitter.com/greg_doucette/status/1270378392454672390", "https://twitter.com/greg_doucette/status/1270378863219138561"],
+      "state": "Texas",
+      "city": "Austin",
+      "desc": "A man was shot in the head at close range with a pepper ball. Footage was uploaded on June 9th, but date of incident is unknown.",
+      "tags": ["pepperball", "protester"],
+      "geolocation": {"lat": "35.5950581", "long": "-82.5514869"},
+      "title": "Man shot in head with pepper ball.",
+      "date": "1997-06-09",
+      "force_category": "less-lethal projectile"
+    },
+    {
+      "src": ["https://twitter.com/greg_doucette/status/1270378392454672390", "https://twitter.com/greg_doucette/status/1270378863219138561"],
+      "state": "Oklahoma",
+      "city": "Everywhere",
+      "desc": "A man was shot in the head at close range with a pepper ball. Footage was uploaded on June 9th, but date of incident is unknown.",
+      "tags": ["pepperball", "protester"],
+      "geolocation": {"lat": "35.5950581", "long": "-82.5514869"},
+      "title": "Man shot in head with pepper ball.",
+      "date": "2001-06-09",
+      "force_category": "less-lethal projectile"
+    },
+    {
+      "src": ["https://twitter.com/greg_doucette/status/1270378392454672390", "https://twitter.com/greg_doucette/status/1270378863219138561"],
+      "state": "Michigan",
+      "city": "Springfield",
+      "desc": "A man was shot in the head at close range with a pepper ball. Footage was uploaded on June 9th, but date of incident is unknown.",
+      "tags": ["pepperball", "protester"],
+      "geolocation": {"lat": "35.5950581", "long": "-82.5514869"},
+      "title": "Man shot in head with pepper ball.",
+      "date": "2005-06-09",
+      "force_category": "less-lethal projectile"
+    },
+    {
+      "src": ["https://twitter.com/greg_doucette/status/1270378392454672390", "https://twitter.com/greg_doucette/status/1270378863219138561"],
+      "state": "Washington",
+      "city": "Seattle",
+      "desc": "A man was shot in the head at close range with a pepper ball. Footage was uploaded on June 9th, but date of incident is unknown.",
+      "tags": ["pepperball", "protester"],
+      "geolocation": {"lat": "35.5950581", "long": "-82.5514869"},
+      "title": "Man shot in head with pepper ball.",
+      "date": "2011-06-09",
+      "force_category": "less-lethal projectile"
+    },
+    {
+      "src": ["https://twitter.com/greg_doucette/status/1270378392454672390", "https://twitter.com/greg_doucette/status/1270378863219138561"],
+      "state": "Florida",
+      "city": "Miami",
+      "desc": "A man was shot in the head at close range with a pepper ball. Footage was uploaded on June 9th, but date of incident is unknown.",
+      "tags": ["pepperball", "protester"],
+      "geolocation": {"lat": "35.5950581", "long": "-82.5514869"},
+      "title": "Man shot in head with pepper ball.",
+      "date": "2015-06-09",
+      "force_category": "less-lethal projectile"
     }
+
   ]
 }
