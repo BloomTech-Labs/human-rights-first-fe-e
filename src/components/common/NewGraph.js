@@ -42,18 +42,6 @@ class NewGraph extends React.Component {
     return returnVal;
   }
 
-  // mapData(policeForce) {
-  //   this.setState({
-  //     policeForceData : policeForce.data.map(pfd => (
-  //       {
-  //         x: new Date(this.dateHelper(pfd.date)),
-  //         y: 300,
-  //         label: pfd.title
-  //       }
-  //    ))})
-
-  // }
-
   render() {
     return (
       <div className="graph-container">
@@ -117,13 +105,7 @@ class NewGraph extends React.Component {
               },
             ]}
           />
-          <VictoryAxis
-            tickFormat={x => new Date(x).getFullYear()}
-            // tickValues={
-            //   1980,
-            //   2020
-            // }
-          />
+          <VictoryAxis tickFormat={x => new Date(x).getFullYear()} />
           <VictoryAxis dependentAxis tickFormat={[200, 300, 400, 500, 600]} />
         </VictoryChart>
 
