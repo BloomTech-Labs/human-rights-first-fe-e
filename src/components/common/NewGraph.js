@@ -11,17 +11,16 @@ import {
 
 import './About.css';
 import DummyData from './DummyData.json';
+import DummyData2 from '../../database/data2.json';
+import { ContactlessTwoTone } from '@material-ui/icons';
 
 class NewGraph extends React.Component {
   constructor() {
     super();
     this.state = {
       isShown: false,
-      policeForceData: {
-        x: new Date(),
-        y: 300,
-        label: 'a',
-      },
+      showState: true,
+      showPhysical: true,
     };
   }
 
@@ -33,22 +32,52 @@ class NewGraph extends React.Component {
     this.setState({ zoomDomain: domain });
   }
 
-  dateHelper(data) {
-    let splitDates = data.split('-');
-    let returnVal = [];
-    splitDates.forEach(date => {
-      returnVal.push(parseInt(date));
-    });
-    return returnVal;
+  // dateHelper(data) {
+  //   const splitDates = data.split('-');
+  //   const returnVal = [];
+  //   splitDates.forEach(date => {
+  //     returnVal.push(parseInt(date));
+  //   });
+  //   return returnVal;
+  // }
+
+  amountOfInstancesPerMonth(data, inputMonth) {
+    const len = data.filter(month =>
+      month.date_text.split(' ').includes(inputMonth)
+    );
+    return len.length;
   }
 
   render() {
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+
+    let ans = [];
+    months.forEach(monthsForce => {
+      ans.push({
+        month: monthsForce,
+        amount: this.amountOfInstancesPerMonth(DummyData.data, monthsForce),
+      });
+    });
     return (
       <div className="graph-container">
         <VictoryChart
           width={700}
           height={500}
-          scale={{ x: 'time' }}
+          domainPadding={{ x: 15 }}
+          // scale={{ x: 'month' }}
           containerComponent={
             <VictoryZoomContainer
               responsive={true}
@@ -60,21 +89,23 @@ class NewGraph extends React.Component {
         >
           <VictoryLine
             labelComponent={<VictoryTooltip />}
+            padding={20}
             style={{
               data: { stroke: 'tomato' },
             }}
-            data={DummyData.data.map(policeForce => ({
-              x: new Date(this.dateHelper(policeForce.date)),
-              y: 300,
-              label: policeForce.state,
+            // x ='DummyData.data.date'
+            // y ='DummyData.data'
+            data={ans.map(useOfForcePerMonth => ({
+              x: useOfForcePerMonth.month,
+              y: useOfForcePerMonth.amount,
             }))}
           />
           <VictoryScatter
-            data={DummyData.data.map(policeForce => ({
-              x: new Date(this.dateHelper(policeForce.date)),
-              y: 300,
-              label: policeForce.state,
+            data={ans.map(useOfForcePerMonth => ({
+              x: useOfForcePerMonth.month,
+              y: useOfForcePerMonth.amount,
             }))}
+            padding={20}
             events={[
               {
                 target: 'data',
@@ -105,11 +136,22 @@ class NewGraph extends React.Component {
               },
             ]}
           />
-          <VictoryAxis tickFormat={x => new Date(x).getFullYear()} />
-          <VictoryAxis dependentAxis tickFormat={[200, 300, 400, 500, 600]} />
+          {/* <VictoryAxis />
+
+            {/* // tickFormat={x => new Date(x).getMonth()} */}
+          {/* // tickValues={[ */}
+          {/* //   new Date(1995, 1, 1),
+            //   new Date(2000, 1, 1),
+            //   new Date(2005, 1, 1),
+            //   new Date(2010, 1, 1),
+            //   new Date(2015, 1, 1),
+            //   new Date(2020, 1, 1),
+            // ]}  */}
+
+          {/* <VictoryAxis dependentAxis tickFormat={[50, 100, 150, 200]} /> */}
         </VictoryChart>
 
-        <VictoryChart
+        {/* <VictoryChart
           width={800}
           height={90}
           scale={{ x: 'time' }}
@@ -122,30 +164,28 @@ class NewGraph extends React.Component {
               onBrushDomainChange={this.handleBrush.bind(this)}
             />
           }
-        >
-          <VictoryAxis
+        > */}
+        {/* <VictoryAxis
             tickValues={[
-              new Date(1985, 1, 1),
-              new Date(1990, 1, 1),
               new Date(1995, 1, 1),
               new Date(2000, 1, 1),
               new Date(2005, 1, 1),
               new Date(2010, 1, 1),
               new Date(2015, 1, 1),
+              new Date(2020, 1, 1),
             ]}
             tickFormat={x => new Date(x).getFullYear()}
-          />
-          <VictoryLine
+          /> */}
+        {/* <VictoryLine
             style={{
               data: { stroke: 'tomato' },
             }}
-            data={DummyData.data.map(policeForce => ({
-              x: new Date(this.dateHelper(policeForce.date)),
-              y: 300,
-              label: policeForce.state,
+            data={ans.map(useOfForcePerMonth => ({
+              x: useOfForcePerMonth.month,
+              y: useOfForcePerMonth.amount
             }))}
-          />
-        </VictoryChart>
+          /> */}
+        {/* </VictoryChart> */}
       </div>
     );
   }
