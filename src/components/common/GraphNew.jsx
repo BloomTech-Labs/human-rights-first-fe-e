@@ -15,13 +15,9 @@ import CheckBoxes from './CheckBoxes'
 
 
 function GraphNew() {
-  // assign initial state then change it depending on what is checked
-  const initialData = (
-    xAndYValues(DummyData.data)
-  )
+  const initialData = (xAndYValues(DummyData.data))
   const [selectedGraphs, setSelectedGraphs] = useState(initialData)
 
-  // console.log('heres the initial data', initialData)
   
   function amountOfInstancesPerMonth(data, inputMonth) {
     const len = data.filter(month => month.date_text.split(' ').includes(inputMonth))
