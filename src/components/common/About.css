@@ -61,8 +61,17 @@
   width: 700px;
 }
 #graph {
-  /* width: 100%; */
   display: flex;
   justify-content: center;
   background-color: white;
+}
+
+/* ____Checkbox Styling____ */
+
+.graph-checkbox-container {
+  display: flex;
+}
+
+.checkbox {
+  padding-bottom: 6%;
 }

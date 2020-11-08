@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {
   VictoryChart,
-  VictoryZoomContainer,
+  VictoryContainer,
   VictoryLine,
   VictoryTooltip,
   VictoryScatter,
+  VictoryAxis,
 } from 'victory';
 
 import './About.css';
@@ -14,18 +15,13 @@ import CheckBoxes from './CheckBoxes'
 
 
 function GraphNew() {
-  const [showPhysical, setShowPhysical] = useState(true)
-  const [zoomDomain, setZoomDomain] = useState(null)
-
   // assign initial state then change it depending on what is checked
   const initialData = (
-    xAndYValues(DummyData.data).map(useOfForcePerMonth => ({
-      x: useOfForcePerMonth.month,
-      y: useOfForcePerMonth.amount
-    }))
+    xAndYValues(DummyData.data)
   )
   const [selectedGraphs, setSelectedGraphs] = useState(initialData)
 
+  // console.log('heres the initial data', initialData)
   
   function amountOfInstancesPerMonth(data, inputMonth) {
     const len = data.filter(month => month.date_text.split(' ').includes(inputMonth))
@@ -38,91 +34,89 @@ function GraphNew() {
     let ans = []
     
     months.forEach(monthsForce => {
-      ans.push({month: monthsForce, amount: amountOfInstancesPerMonth(data, monthsForce)})
+      ans.push({x: monthsForce, y: amountOfInstancesPerMonth(data, monthsForce)})
     })
 
     return ans
   }
   
-  function handleCheck(e){
-    e.preventDefault()
-    console.log(e.target.name)
-    // setSelectedGraphs(xAndYValues(filterByState(DummyData.data, e.target.name).map(graph => ({
-    //   x: graph.month,
-    //   y: graph.amount
-    // }))))
-  }
+ 
 
-  function handleZoom(domain) {
-    setShowPhysical({ selectedDomain: domain })
-  }
 
   return (
-    <div className="graph-container">
-      
-      <VictoryChart
-          width={700}
-          height={500}
-          domainPadding={{ x: 15}}
-          // scale={{ x: 'month' }}
-          containerComponent={
-            <VictoryZoomContainer
-              responsive={true}
-              zoomDimension="x"
-              zoomDomain={zoomDomain}
-              onZoomDomainChange={handleZoom.bind(this)}
+    <div className="graph-checkbox-container">
+      <div className='graph-container'>
+        <VictoryChart
+            width={700}
+            height={500}
+            // domainPadding={{ x: 15}}
+            // scale={{ x: 'month' }}
+            // containerComponent={
+
+          //   <VictoryContainer
+          //     responsive={true}
+          //   //   //   // zoomDimension="x"
+          //   //   //   // zoomDomain={zoomDomain}
+          //   //   //   // onZoomDomainChange={handleZoom.bind(this)}
+          //   />
+          //   }
+          >
+            <VictoryAxis/>
+            <VictoryAxis dependentAxis/>
+            <VictoryLine
+              labelComponent={<VictoryTooltip />}
+              padding={20}
+              style={{
+                data: { stroke: 'tomato' },
+              }}
+              // x ='DummyData.data.date'
+              // y ='DummyData.data'
+              data={selectedGraphs}
             />
-          }
-        >
-          <VictoryLine
-            labelComponent={<VictoryTooltip />}
-            padding={20}
-            style={{
-              data: { stroke: 'tomato' },
-            }}
-            // x ='DummyData.data.date'
-            // y ='DummyData.data'
-            data={selectedGraphs}
-          />
-          <VictoryScatter
-            data={xAndYValues(DummyData.data).map(useOfForcePerMonth => ({
-              x: useOfForcePerMonth.month,
-              y: useOfForcePerMonth.amount
-            }))}
-            padding={20}
-            events={[
-              {
-                target: 'data',
-                eventHandlers: {
-                  onMouseOver: () => {
-                    return [
-                      {
-                        mutation: props => {
-                          return {
-                            style: Object.assign({}, props.style, {
-                              fill: 'tomato',
-                            }),
-                          };
-                        },
+              <VictoryScatter
+                labelComponent={<VictoryTooltip  cornerRadius={({ datum }) => datum.x > 6 ? 0 : 20}
+                pointerLength={({ datum }) => datum.y > 0 ? 5 : 20}
+                                labelComponent={<VictoryTooltip />}/>}
+                data={selectedGraphs}
+                padding={20}
+                labels={({datum}) => datum.y}
+                events={[
+                  {
+                    target: 'data',
+                    eventHandlers: {
+                      onMouseOver: () => {
+                        return [
+                          {
+                            mutation: props => {
+                              return {
+                                style: Object.assign({}, props.style, {
+                                  fill: 'tomato',
+                                }),
+                              };
+                            },
+                          },
+                        ];
                       },
-                    ];
-                  },
-                  onMouseOut: () => {
-                    return [
-                      {
-                        mutation: () => {
-                          return null;
-                        },
+                      onMouseOut: () => {
+                        return [
+                          {
+                            mutation: () => {
+                              return null;
+                            },
+                          },
+                        ];
                       },
-                    ];
+                    },
                   },
-                },
-              },
-            ]}
-          />
-  
-        </VictoryChart>
-      <CheckBoxes handleCheck={handleCheck} xAndYValues={xAndYValues} selectedGraphs={selectedGraphs} setSelectedGraphs={setSelectedGraphs} />
+                ]}
+              />
+          </VictoryChart>
+        </div>
+      <CheckBoxes 
+        xAndYValues={xAndYValues} 
+        selectedGraphs={selectedGraphs} 
+        setSelectedGraphs={setSelectedGraphs}
+      />
     </div>
   )
 }
