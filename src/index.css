@@ -434,6 +434,7 @@ middle content
   font-family: 'Merriweather', serif;
 }
 
+
 @media screen and (max-width: 280px) {
   .view-map {
     width: 90%;
