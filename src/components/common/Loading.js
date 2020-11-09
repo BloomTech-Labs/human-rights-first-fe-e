@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import OldMap from './OldMap';
+
+// import OldMap from './OldMap';
 // import Map from '../common/Map';
-// import Graph from '../common/Graph';
-import NewGraph from './NewGraph';
+import Graph from '../common/Graph';
+
 import About from '../common/About';
 import FiltersForm from './FilterForm';
 import 'antd/dist/antd.css';
