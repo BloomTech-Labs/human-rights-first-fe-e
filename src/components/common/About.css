@@ -52,14 +52,6 @@
 
 /* ____New Graph Styling____ */
 
-.graph-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  width: 700px;
-}
 #graph {
   display: flex;
   justify-content: center;

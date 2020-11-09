@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import OldMap from './OldMap';
-// import Map from '../common/Map';
-// import Graph from '../common/Graph';
-import NewGraph from './NewGraph';
+import React from 'react';
+import { Tabs, Button, Popover } from 'antd';
+
 import GraphNew from './GraphNew';
 import About from '../common/About';
 import FiltersForm from './FilterForm';
 import 'antd/dist/antd.css';
 import '../../styles/index.css';
-import { Tabs, Button, Popover } from 'antd';
 
 export const Loading = () => {
   const { TabPane } = Tabs;
@@ -33,11 +30,11 @@ export const Loading = () => {
           size="large"
           tabBarExtraContent={openFilters}
         >
-          <TabPane tab="Map" key="1">
+          {/* <TabPane tab="Map" key="1">
             <div id="map" style={{ display: 'block' }}>
-              {/* {<Map />} */}
+              {<Map />}
             </div>
-          </TabPane>
+          </TabPane> */}
           <TabPane tab="Graph" key="2" style={{ backgroundColor: '#191a1a' }}>
             <div id="graph">{<GraphNew />}</div>
           </TabPane>
