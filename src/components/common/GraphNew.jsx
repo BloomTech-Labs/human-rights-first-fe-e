@@ -8,11 +8,11 @@ import {
 } from 'victory';
 
 import './About.css';
-import DummyData from './all_sources_json.json';
+import jsonFile from './all_sources_json.json';
 import CheckBoxes from './CheckBoxes';
 
 function GraphNew() {
-  const initialData = xAndYValues(DummyData.data);
+  const initialData = xAndYValues(jsonFile.data);
   const [selectedGraphs, setSelectedGraphs] = useState(initialData);
 
   // take the length of instances per month
