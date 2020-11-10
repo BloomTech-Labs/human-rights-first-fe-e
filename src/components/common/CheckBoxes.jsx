@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import DummyData from './DummyData.json';
+import json from './all_sources_json.json';
 import './About.css';
 
 function CheckBoxes(props) {
@@ -9,13 +9,13 @@ function CheckBoxes(props) {
   const { xAndYValues, selectedGraphs, setSelectedGraphs } = props;
 
   // displays checkboxes
-  const states = DummyData.data.map(allStates => allStates.state);
-  const condensedStates = [...new Set(states)];
+  const force = json.data.map(allForceCat => allForceCat.force_cat);
+  const condensedForces = [...new Set(force)];
   
   // when a State is checked, isolate that State's data
-  function filterExcessStates(data, inputState) {
+  function filterExcessForces(data, inputState) {
     return [...data].filter(
-      selectedState => selectedState.state === inputState
+      selectedState => selectedState.force_cat === inputState
     );
   }
 
@@ -23,7 +23,7 @@ function CheckBoxes(props) {
   // do opposite if checking box
   function handleChange(event) {
     let selectedState = xAndYValues(
-      filterExcessStates(DummyData.data, event.target.name)
+      filterExcessForces(json.data, event.target.name)
     );
 
     let newGraph = [];
@@ -51,11 +51,11 @@ function CheckBoxes(props) {
 
   return (
     <div className="checkboxes">
-      {condensedStates.map(stateCheckBox => (
+      {condensedForces.map(stateCheckBox => (
         <label className="checkbox">
           <input
             type="checkbox"
-            key={stateCheckBox.id}
+            key={stateCheckBox}
             name={`${stateCheckBox}`}
             value={isChecked}
             defaultChecked={isChecked}
