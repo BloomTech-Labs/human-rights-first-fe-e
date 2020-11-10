@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import DummyData from './DummyData.json';
+import DummyData from './all_sources_json.json';
 import './About.css';
 
 function CheckBoxes(props) {
@@ -9,13 +9,13 @@ function CheckBoxes(props) {
   const { xAndYValues, selectedGraphs, setSelectedGraphs } = props;
 
   // displays checkboxes
-  const states = DummyData.data.map(allStates => allStates.state);
+  const states = DummyData.data.map(allStates => allStates.force_cat);
   const condensedStates = [...new Set(states)];
   
   // when a State is checked, isolate that State's data
   function filterExcessStates(data, inputState) {
     return [...data].filter(
-      selectedState => selectedState.state === inputState
+      selectedState => selectedState.force_cat === inputState
     );
   }
 
@@ -55,7 +55,7 @@ function CheckBoxes(props) {
         <label className="checkbox">
           <input
             type="checkbox"
-            key={stateCheckBox.id}
+            key={stateCheckBox}
             name={`${stateCheckBox}`}
             value={isChecked}
             defaultChecked={isChecked}

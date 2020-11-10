@@ -8,7 +8,7 @@ import {
 } from 'victory';
 
 import './About.css';
-import DummyData from './DummyData.json';
+import DummyData from './all_sources_json.json';
 import CheckBoxes from './CheckBoxes';
 
 function GraphNew() {
