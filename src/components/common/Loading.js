@@ -30,6 +30,7 @@ export const Loading = () => {
       )
       .then(res => {
         setInitailData(res.data);
+        console.log(res.data);
       });
   }, []);
 
