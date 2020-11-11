@@ -9,9 +9,10 @@ import {
 
 import './About.css';
 import CheckBoxes from './CheckBoxes';
+import ScrollWindow from './ScrollWindow';
 
 function GraphNew(props) {
-  const {data, initialData, setData} = props;
+  const {initialData} = props;
   const [graphData, setGraphData] = useState({
     'empty hand control': false,
     'chemical': false,
@@ -21,10 +22,8 @@ function GraphNew(props) {
     'lethal force': false,
     'other': false
   });
-
-  // console.log('xandydata', xAndYData)
   const [selectedGraphs, setSelectedGraphs] = useState([]);
-  // const xAndYData = xAndYValues([...initialData]);
+  const [swData, setSWData] = useState([]);
 
   const categoryColor = {
     'empty hand control': 'blue',
@@ -66,7 +65,7 @@ function GraphNew(props) {
   }
 
   function xAndYValuesOnRender(data) {
-    let xAndY = months.map(monthsForce => ({
+    let xAndY = months.map((monthsForce, index) => ({
         x: monthsForce,
         y: amountOfInstancesPerMonth(data, monthsForce),
         label: amountOfInstancesPerMonth(data, monthsForce),
@@ -80,7 +79,6 @@ function GraphNew(props) {
         y: amountOfInstancesPerMonth(data, monthsForce),
         label: amountOfInstancesPerMonth(data, monthsForce),
     }))
-
     return xAndY;
   }
 
@@ -88,6 +86,7 @@ function GraphNew(props) {
     xAndYValuesOnRender(initialData)
   }, [])
   return (
+    <div>
     <div className="graph-checkbox-container">
       <VictoryChart width={700} height={500}>
         <VictoryAxis />
@@ -113,6 +112,25 @@ function GraphNew(props) {
         labelComponent={<VictoryTooltip />}
         data={ xAndYValues(filterExcessForces(initialData, 'empty hand control'))}
         labels={({ datum }) => datum.y}
+        events={[{target: 'data', eventHandlers: {onClick: () => {
+          return [{
+            target: 'labels',
+            mutation: props => {
+             const filteredData = filterExcessForces(initialData, 'empty hand control').filter(y => {
+                if (!y.date) {
+                  return false
+                }
+                else if (months[parseInt(y.date.split('-')[1]) - 1] === props.datum.x) {
+                  return true
+                } else {
+                  return false
+                }
+              });
+              console.log(!filteredData === true)
+              filteredData.length > 0 ? setSWData(filteredData) : setSWData([]);
+            }
+          }]
+        }}}]}
         />}
 
         {/*CHEMICAL*/}
@@ -214,6 +232,8 @@ function GraphNew(props) {
         graphData={graphData}
         color={categoryColor}
       />
+    </div>
+    <ScrollWindow data={swData}/>
     </div>
   );
 }
