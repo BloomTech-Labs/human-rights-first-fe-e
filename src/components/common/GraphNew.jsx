@@ -13,6 +13,10 @@ import ScrollWindow from './ScrollWindow';
 
 function GraphNew(props) {
   const {initialData} = props;
+
+  const [selectedGraphs, setSelectedGraphs] = useState([]);
+  const [swData, setSWData] = useState([]);
+  
   const [graphData, setGraphData] = useState({
     'empty hand control': false,
     'chemical': false,
@@ -22,9 +26,7 @@ function GraphNew(props) {
     'lethal force': false,
     'other': false
   });
-  const [selectedGraphs, setSelectedGraphs] = useState([]);
-  const [swData, setSWData] = useState([]);
-
+  
   const categoryColor = {
     'empty hand control': 'blue',
     'chemical': 'orange',
