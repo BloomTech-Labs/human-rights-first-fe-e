@@ -15,7 +15,12 @@ const SWDiv = styled.div`
   padding: 0 5% 0 5%;
   .article-container {
     padding-top: 5% 0 5% 0;
-    margin: 5% 0 5% 0;
+    margin: 2% 0 2% 0;
+    padding: 2%;
+    width: 50%;
+    :hover {
+      background-color: white;
+    }
   }
   .source {
     font-family: 'Fjalla One', sans-serif;

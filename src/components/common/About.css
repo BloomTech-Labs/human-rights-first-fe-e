@@ -68,7 +68,8 @@
 
 .graph-checkbox-container {
   display: flex;
-  width: 100%;
+  width: 70vw;
+  margin: auto;
 }
 
 .checkbox {

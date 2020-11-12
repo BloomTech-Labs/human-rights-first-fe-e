@@ -55,4 +55,6 @@ div.ant-select-selector {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  width: 20vw;
+  margin-top: 10vh;
 }

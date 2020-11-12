@@ -19,7 +19,7 @@ export const Loading = () => {
       content={<FiltersForm />}
       trigger="click"
     >
-      <Button type="link">Open Filters</Button>
+      {/* <Button type="link">Open Filters</Button> */}
     </Popover>
   );
 
