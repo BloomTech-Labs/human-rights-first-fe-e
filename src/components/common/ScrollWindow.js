@@ -3,30 +3,83 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const SWDiv = styled.div`
-  height: 170px;
-  width: 1000px;
-  background-color: lightblue;
-  overflow: scroll;
+  height: 70vh;
+  width: 100%;
+  background-color: #d4d4d4;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  justify-content: flex-start;
+  padding: 0 5% 0 5%;
+  .article-container {
+    padding-top: 5% 0 5% 0;
+    margin: 5% 0 5% 0;
+  }
+  .source {
+    font-family: 'Fjalla One', sans-serif;
+  }
+  h1 {
+    font-family: 'Fjalla One', sans-serif;
+    text-transform: uppercase;
+    border-top: 2px solid black;
+    margin-top: -2%;
+  }
+  .city-state {
+    font-weight: 300;
+    text-transform: uppercase;
+    color: black;
+  }
+  .date {
+    padding: -5px;
+  }
 `;
 
 const ScrollWindow = props => {
   const { data } = props;
   return (
     <SWDiv>
-      {data.map(incidents => {
-        const linksArr = incidents.src.split('');
-        linksArr.splice(0, 1);
-        linksArr.splice(linksArr.length - 1, 1);
-        linksArr.splice(0, 1);
-        linksArr.splice(linksArr.length - 1, 1);
+      {data.length === 0 && (
+        <p>
+          Click a node on the graph to display instances of police violence per
+          month
+        </p>
+      )}
+      {data.map(incident => {
+        const linksArr = incident.src.split('');
+        linksArr.splice(0, 2);
+        linksArr.splice(linksArr.length - 1, 2);
         let newLink = Array(linksArr.join('').split(','));
 
+        const newDate = new Date(incident.date);
+        const formattedDate = String(newDate).split(' ');
+        const day = formattedDate[0],
+          month = formattedDate[1],
+          date = formattedDate[2],
+          year = formattedDate[3];
         return (
-          <div>
+          <div className="article-container">
+            <div className="date">
+              <p>{day + ', ' + month + ' ' + date + ', ' + year}</p>
+            </div>
+
+            <h1>{incident.title}</h1>
+            <p>
+              <span className="city-state">
+                {incident.city}, {incident.state}
+                {' - '}
+              </span>
+              {incident.description}
+            </p>
             {newLink[0].map((link, index) => {
               if (link.includes('http')) {
                 return (
-                  <Link to={link} target="_blank">{`Video ${index + 1}`}</Link>
+                  <Link
+                    className="source"
+                    to={link}
+                    target="_blank"
+                  >{`|Source ${index + 1}| `}</Link>
                 );
               }
             })}

@@ -5,7 +5,7 @@ import './About.css';
 function CheckBoxes(props) {
   const [isChecked, setIsChecked] = useState({});
 
-  const { initialData, xAndYValues, selectedGraphs, setSelectedGraphs, setGraphData, graphData, color} = props;
+  const { initialData, setGraphData, graphData, color} = props;
 
   // displays checkboxes
   const force = initialData.map(allForceCat => allForceCat.force_cat);
@@ -26,7 +26,7 @@ function CheckBoxes(props) {
 
   return (
     <div className="checkboxes">
-      {condensedForces.map(stateCheckBox => {
+      {condensedForces.map((stateCheckBox) => {
         let borderColor = color[stateCheckBox] || 'pink';
         return (
         <label className="checkbox">
@@ -37,7 +37,7 @@ function CheckBoxes(props) {
             value={isChecked}
             onChange={handleChange}
           />
-          <span style={{borderBottom: `2px solid ${borderColor}`}}>{stateCheckBox ? stateCheckBox : 'Null'}</span>
+          <span style={{borderBottom: `2px solid ${borderColor}`, textTransform: 'capitalize'}}>{stateCheckBox ? stateCheckBox : 'Null'}</span>
         </label>)
       })}
     </div>
