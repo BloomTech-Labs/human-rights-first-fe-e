@@ -92,15 +92,51 @@ function GraphNew(props) {
           <VictoryAxis />
           <VictoryAxis dependentAxis />
 
-          {
-            <VictoryLine
-              labelComponent={<VictoryTooltip />}
-              style={{
-                data: { stroke: 'tomato' },
-              }}
-              data={selectedGraphs}
-            />
-          }
+          
+          <VictoryLine
+            labelComponent={<VictoryTooltip />}
+            style={{
+              data: { stroke: 'tomato' },
+            }}
+            data={selectedGraphs}
+          />
+          <VictoryScatter
+          labelComponent={<VictoryTooltip />}
+          data={selectedGraphs}
+          labels={({ datum }) => datum.y}
+          events={[
+            {
+              target: 'data',
+              eventHandlers: {
+                onClick: () => {
+                  return [
+                    {
+                      target: 'labels',
+                      mutation: props => {
+                        const filteredData = initialData.filter(y => {
+                          if (!y.date) {
+                            return false;
+                          } else if (
+                            months[parseInt(y.date.split('-')[1]) - 1] ===
+                            props.datum.x
+                          ) {
+                            return true;
+                          } else {
+                            return false;
+                          }
+                        });
+                        filteredData.length > 0
+                          ? setSWData(filteredData)
+                          : setSWData([]);
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]}
+          />
+          
 
           {/*EMPTY HAND CONTROL*/}
           {graphData['empty hand control'] && (
@@ -145,7 +181,6 @@ function GraphNew(props) {
                                 return false;
                               }
                             });
-                            console.log(!filteredData === true);
                             filteredData.length > 0
                               ? setSWData(filteredData)
                               : setSWData([]);
@@ -174,6 +209,40 @@ function GraphNew(props) {
               labelComponent={<VictoryTooltip />}
               data={xAndYValues(filterExcessForces(initialData, 'chemical'))}
               labels={({ datum }) => datum.y}
+              events={[
+                {
+                  target: 'data',
+                  eventHandlers: {
+                    onClick: () => {
+                      return [
+                        {
+                          target: 'labels',
+                          mutation: props => {
+                            const filteredData = filterExcessForces(
+                              initialData,
+                              'chemical'
+                            ).filter(y => {
+                              if (!y.date) {
+                                return false;
+                              } else if (
+                                months[parseInt(y.date.split('-')[1]) - 1] ===
+                                props.datum.x
+                              ) {
+                                return true;
+                              } else {
+                                return false;
+                              }
+                            });
+                            filteredData.length > 0
+                              ? setSWData(filteredData)
+                              : setSWData([]);
+                          },
+                        },
+                      ];
+                    },
+                  },
+                },
+              ]}
             />
           )}
 
@@ -196,6 +265,40 @@ function GraphNew(props) {
                 filterExcessForces(initialData, 'blunt impact')
               )}
               labels={({ datum }) => datum.y}
+              events={[
+                {
+                  target: 'data',
+                  eventHandlers: {
+                    onClick: () => {
+                      return [
+                        {
+                          target: 'labels',
+                          mutation: props => {
+                            const filteredData = filterExcessForces(
+                              initialData,
+                              'blunt impact'
+                            ).filter(y => {
+                              if (!y.date) {
+                                return false;
+                              } else if (
+                                months[parseInt(y.date.split('-')[1]) - 1] ===
+                                props.datum.x
+                              ) {
+                                return true;
+                              } else {
+                                return false;
+                              }
+                            });
+                            filteredData.length > 0
+                              ? setSWData(filteredData)
+                              : setSWData([]);
+                          },
+                        },
+                      ];
+                    },
+                  },
+                },
+              ]}
             />
           )}
 
@@ -218,6 +321,40 @@ function GraphNew(props) {
                 filterExcessForces(initialData, 'officer presence')
               )}
               labels={({ datum }) => datum.y}
+              events={[
+                {
+                  target: 'data',
+                  eventHandlers: {
+                    onClick: () => {
+                      return [
+                        {
+                          target: 'labels',
+                          mutation: props => {
+                            const filteredData = filterExcessForces(
+                              initialData,
+                              'officer presence'
+                            ).filter(y => {
+                              if (!y.date) {
+                                return false;
+                              } else if (
+                                months[parseInt(y.date.split('-')[1]) - 1] ===
+                                props.datum.x
+                              ) {
+                                return true;
+                              } else {
+                                return false;
+                              }
+                            });
+                            filteredData.length > 0
+                              ? setSWData(filteredData)
+                              : setSWData([]);
+                          },
+                        },
+                      ];
+                    },
+                  },
+                },
+              ]}
             />
           )}
 
@@ -236,6 +373,40 @@ function GraphNew(props) {
               labelComponent={<VictoryTooltip />}
               data={xAndYValues(filterExcessForces(initialData, null))}
               labels={({ datum }) => datum.y}
+              events={[
+                {
+                  target: 'data',
+                  eventHandlers: {
+                    onClick: () => {
+                      return [
+                        {
+                          target: 'labels',
+                          mutation: props => {
+                            const filteredData = filterExcessForces(
+                              initialData,
+                              'null'
+                            ).filter(y => {
+                              if (!y.date) {
+                                return false;
+                              } else if (
+                                months[parseInt(y.date.split('-')[1]) - 1] ===
+                                props.datum.x
+                              ) {
+                                return true;
+                              } else {
+                                return false;
+                              }
+                            });
+                            filteredData.length > 0
+                              ? setSWData(filteredData)
+                              : setSWData([]);
+                          },
+                        },
+                      ];
+                    },
+                  },
+                },
+              ]}
             />
           )}
 
@@ -258,6 +429,40 @@ function GraphNew(props) {
                 filterExcessForces(initialData, 'conducted energy device')
               )}
               labels={({ datum }) => datum.y}
+              events={[
+                {
+                  target: 'data',
+                  eventHandlers: {
+                    onClick: () => {
+                      return [
+                        {
+                          target: 'labels',
+                          mutation: props => {
+                            const filteredData = filterExcessForces(
+                              initialData,
+                              'conducted energy device'
+                            ).filter(y => {
+                              if (!y.date) {
+                                return false;
+                              } else if (
+                                months[parseInt(y.date.split('-')[1]) - 1] ===
+                                props.datum.x
+                              ) {
+                                return true;
+                              } else {
+                                return false;
+                              }
+                            });
+                            filteredData.length > 0
+                              ? setSWData(filteredData)
+                              : setSWData([]);
+                          },
+                        },
+                      ];
+                    },
+                  },
+                },
+              ]}
             />
           )}
 
@@ -280,14 +485,44 @@ function GraphNew(props) {
                 filterExcessForces(initialData, 'lethal force')
               )}
               labels={({ datum }) => datum.y}
+              events={[
+                {
+                  target: 'data',
+                  eventHandlers: {
+                    onClick: () => {
+                      return [
+                        {
+                          target: 'labels',
+                          mutation: props => {
+                            const filteredData = filterExcessForces(
+                              initialData,
+                              'lethal force'
+                            ).filter(y => {
+                              if (!y.date) {
+                                return false;
+                              } else if (
+                                months[parseInt(y.date.split('-')[1]) - 1] ===
+                                props.datum.x
+                              ) {
+                                return true;
+                              } else {
+                                return false;
+                              }
+                            });
+                            filteredData.length > 0
+                              ? setSWData(filteredData)
+                              : setSWData([]);
+                          },
+                        },
+                      ];
+                    },
+                  },
+                },
+              ]}
             />
           )}
 
-          <VictoryScatter
-            labelComponent={<VictoryTooltip />}
-            data={selectedGraphs}
-            labels={({ datum }) => datum.y}
-          />
+
         </VictoryChart>
         <CheckBoxes
           initialData={initialData}
@@ -297,7 +532,7 @@ function GraphNew(props) {
         />
       </div>
       <div className="scroll-container">
-        <ScrollWindow data={swData} />
+        <ScrollWindow data={swData}/>
       </div>
     </div>
   );
