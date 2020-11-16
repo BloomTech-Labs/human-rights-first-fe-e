@@ -384,7 +384,7 @@ function GraphNew(props) {
                           mutation: props => {
                             const filteredData = filterExcessForces(
                               initialData,
-                              'null'
+                              null
                             ).filter(y => {
                               if (!y.date) {
                                 return false;
