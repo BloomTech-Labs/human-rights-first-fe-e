@@ -13,6 +13,7 @@ const SWDiv = styled.div`
   border-radius: 5px;
   justify-content: flex-start;
   padding: 0 5% 0 5%;
+  transition-delay: 5s;
   .article-container {
     padding-top: 5% 0 5% 0;
     margin: 2% 0 2% 0;
