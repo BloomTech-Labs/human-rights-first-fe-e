@@ -48,8 +48,13 @@ export const Loading = () => {
             </div>
           </TabPane> */}
           <TabPane tab="Graph" key="2" style={{ backgroundColor: '#191a1a' }}>
-            <div id="graph">
-              {initialData && <GraphNew initialData={initialData} />}
+            <div id="graph-title-container">
+              <div className="title-container">
+                <h1>Instances of Police Use of Force per Month in the US</h1>
+              </div>
+              <div className="graph">
+                {initialData && <GraphNew initialData={initialData} />}
+              </div>
             </div>
           </TabPane>
           <TabPane tab="About" key="3">

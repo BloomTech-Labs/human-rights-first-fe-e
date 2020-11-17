@@ -37,7 +37,7 @@ function CheckBoxes(props) {
             value={isChecked}
             onChange={handleChange}
           />
-          <span style={{borderBottom: `2px solid ${borderColor}`, textTransform: 'capitalize', padding: '4%', fontSize: '1.3rem'}}>{stateCheckBox ? stateCheckBox : 'Null'}</span>
+          <span style={{borderBottom: `2px solid ${borderColor}`, textTransform: 'capitalize', padding: '4%', fontSize: '1 rem'}}>{stateCheckBox ? stateCheckBox : 'Null'}</span>
         </label>)
       })}
     </div>

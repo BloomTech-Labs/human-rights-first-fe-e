@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import '../../styles/index.css';
-import SignInModal from './SignInModal/SignInModal';
+// import SignInModal from './SignInModal/SignInModal';
 
 const NavBar = () => {
   // STATE HELD FOR RENDERING LOGIN/SIGNUP FORMS
-  const [signIn, setSignIn] = useState(false);
 
   return (
     <div className="logo-pane">
@@ -15,27 +14,6 @@ const NavBar = () => {
         />
         <h2 style={{ margin: 0 }}>Human Rights First</h2>
       </div>
-      <div className="user-nav">
-        <button
-          onClick={e => {
-            e.preventDefault();
-            setSignIn('Sign In');
-          }}
-        >
-          Sign In
-        </button>
-
-        <button
-          onClick={e => {
-            e.preventDefault();
-            setSignIn('Sign Up');
-          }}
-        >
-          Sign Up
-        </button>
-      </div>
-
-      {signIn && <SignInModal signIn={signIn} setSignIn={setSignIn} />}
     </div>
   );
 };

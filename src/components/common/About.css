@@ -52,10 +52,24 @@
 
 /* ____New Graph Styling____ */
 
-#graph {
+#graph-title-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.graph {
+  display: flex;
+}
+
+.title-container {
   display: flex;
   justify-content: center;
-  background-color: white;
+}
+
+.title-container h1 {
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .graph-scrollwindow {

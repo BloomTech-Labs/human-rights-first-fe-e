@@ -65,10 +65,10 @@ function GraphNew(props) {
   }
 
   function xAndYValuesOnRender(data) {
-    let xAndY = months.map((monthsForce, index) => ({
+    let xAndY = months.map((monthsForce) => ({
       x: monthsForce,
       y: amountOfInstancesPerMonth(data, monthsForce),
-      label: amountOfInstancesPerMonth(data, monthsForce),
+      label: amountOfInstancesPerMonth(data, monthsForce) === 0 ? 'insufficient data' : amountOfInstancesPerMonth(data, monthsForce)
     }));
 
     setSelectedGraphs(xAndY);
@@ -77,7 +77,7 @@ function GraphNew(props) {
     let xAndY = months.map(monthsForce => ({
       x: monthsForce,
       y: amountOfInstancesPerMonth(data, monthsForce),
-      label: amountOfInstancesPerMonth(data, monthsForce),
+      label: amountOfInstancesPerMonth(data, monthsForce) === 0 ? 'insufficient data' : amountOfInstancesPerMonth(data, monthsForce)
     }));
     return xAndY;
   }
@@ -88,7 +88,7 @@ function GraphNew(props) {
   return (
     <div className="graph-scrollwindow">
       <div className="graph-checkbox-container">
-        <VictoryChart width={700} height={500}>
+        <VictoryChart width={700} height={500} style={{fontFamily: 'Fjalla One, sans-serif'}}>
           <VictoryAxis />
           <VictoryAxis dependentAxis />
 
