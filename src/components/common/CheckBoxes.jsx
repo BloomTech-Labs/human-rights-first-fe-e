@@ -11,8 +11,6 @@ function CheckBoxes(props) {
   const force = initialData.map(allForceCat => allForceCat.force_cat);
   const condensedForces = [...new Set(force)];
 
-  // take the isolated data, subtract if from initial force_cat
-  // do opposite if checking box
   function handleChange(event) {
     setGraphData({
       ...graphData,
