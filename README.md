@@ -10,7 +10,11 @@
 
 ## Deployed App
 - https://efe.humanrightsfirst.dev/
-<img src='./src/assets/hrf.jpg'>
+<img src='src/assets/Screen Shot 2020-11-17 at 12.20.37 PM.png'>
+<img src='src/assets/Screen Shot 2020-11-17 at 12.21.04 PM.png'>
+
+## Linked Repo
+- https://github.com/Lambda-School-Labs/human-rights-first-fe-e
 
 ## Contributors
 
@@ -30,74 +34,43 @@
 |[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/bbrauser) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/syrrostrattus) |
 | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/bbrauserds) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/liamcloudhogan) |  
 
-## Features
+## Getting Started
+- The frontend team inheritted an app that was broken locally. The map in the "Loading" component located in src/common/Loading was not rendering locally, but was rendering on the deployed link. Since it would not work locally, we commented out the map. We also inheritted a "Graph" component that was unfinished which is why our graph is named "GraphNew". The graph we inheritted did not have any real data, it was all hard coded. 
+- The only component we made significant changes to is the "Loading" component. The files we added are "Checkboxes.jsx", "GraphNew.jsx", and "ScrollWindow.js".
+- Start by using 'npm install' then 'npm start' to boot up the development server.
+- Notice, we did not have a backend end developer. The only endpoint we used is in "Loading" and it contains all the data that the data scientists found.
+- Heres the link to the Labs 28 Structure. Our mvp was "How often are cretain types of police use of force being used over time?" https://docs.google.com/document/d/19uURSWEuG-5MbmXjRXZVA5DIortFbpStvb_UzNSLrrE/edit
 
-- a dynamic navigation bar with tabs displaying either the Map, the Graph, or the About page as well as a popup with the Filter form
-- Sign in/Sign out options `(not functional)`
-- Graph: 
-    - timelime view of number of incidents over the course of a year (data dates range) 
-    - ability to filter out data by type of brutality used
-- Filter `(currently applying just for the map)`: 
-    - date range implemented `(not functional)`
-    - reset filters `(not functional)`
-    - select state dropdown or search state by typing(selected state can be removed with one click on the x  button on the right afterwards): zooms onto the selected state
-    - search by zip-code (looked up zipcode can be removed with the x  button on the right of it afterwards): zooms onto a zipcode location
-    - filter incidents by type of brutality
-    - filter incidents by type of source like Twitter, Reddit, etc `(not functional)`
-- Map:
-    - graphic content warning screen 
-    - Control panel:
-        - ability to navigate and zoom on to user's location
-        - zoom in/out the map 
-        - reset bearing to north
-    - dynamic Hide/Show Map Options menu:
-        - enable/disable zooming on the map with mouse scroll wheel 
-        - enable/disable fast travel states: turns on a hover option for each screen and zooms onto the highlighted state when clicked 
-        - reset map view to the original view
+## Tech Stack
+- The frontend team used React.js, one instance of react-router in the 'ScrollWinder' component, and the charting library Victory. The previous team used some redux. 
 
+## User Flow
+- The user is able to interact with the graph to display different types of force used by police officers
+- The user is able to display all instances of a particular month
 
+## Wireframes
+<img src="src/assets/Screen Shot 2020-11-18 at 12.15.51 PM.png">
 
-## Requirements
+## Architecture
+- Note, this was made when we had a backend. There is only one endpoint with contains all the data in an array of JSON objects.
+- We were not able to connect the login components we made because we did not have a back end to send a JWT to. We have deleted the login components since we did not use them. 
+<img src="src/assets/Screen Shot 2020-11-18 at 12.16.56 PM.png">
 
-- [Labs Engineering Standard requirements found here](https://www.notion.so/Human-Rights-First-Roadmap-Team-Kevin-c53ed8e80b0e4584aba47abee5753591)
+## Endpoints
+- We used one endpoint, located in src/components/common/loading
 
-### Environment variable
+## Issues
+- The map we inheritted does not work locally
+- Our graph component does not render on the deployed site
+- We only have one endpoint, so the data of over 1000 data points renders every time state changes
+- The graph only shows 5 months worth of data because DS supplied 5 months of data
 
-- `REACT_APP_MAPBOX_TOKEN` Mapbox access tokens (check `https://docs.mapbox.com/help/how-mapbox-works/access-tokens/`)
-> the token can be found on the previous team's deployment info page or recreated on mapbox studio
+## Future Features
+- More data
+- More endpoints
+- More responsive
+- Tranisition effects for the graph and the displayed data
 
-## Components
-
-- Loading Page
-- NavBar
-- Filter Form
-- Map
-- Graph
-- About
-
-
-
-## Styling Our App
-- `CSS`
-- `AntD`
-
-## Data Visualization 
-`MapBox` - https://docs.mapbox.com :
-- using mapboxgl approach
-
- 
-## ⚠ Contributing - future features needed/desired for this project:
-
-> Please refer to the highlited parentheses statements throughout this ReadMe for better understanding
-
-- successful connection between Back End and Data Science teams
-- successful connection between Back End and Front End teams
-- Register/Login functionality added (currenly not functional)
-- ability to reset filters
-- ability to apply and filter by date range
-- ability to filter by source type
-- prevent map refresh/reload when filtering data by incident type:
-    - instead of state or global variables for the filter function, more research can be done on filtering layers inside of map.addLayer() functions using filter functions mapbox has
-    - setting filters is also an options:  https://docs.mapbox.com/mapbox-gl-js/api/map/#map#setfilter
-- make filter for functional with the Graph
-    - add more options to the Graph like filtering by state or zipcode or displaying data based off of date range
+## Support
+- Reach out to me Galo Sandoval or either of the data scientists Sean Backstrom or Brad Brauser
+- Following this project, Sean B and Brad are working on a side project to implement machine learning to brush through police use of force in real time
